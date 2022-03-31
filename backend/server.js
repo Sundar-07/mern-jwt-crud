@@ -2,8 +2,9 @@ const express = require("express");
 const errorHandler = require("./middleware/errorMiddleware");
 const dotenv = require("dotenv").config();
 const colors = require("colors");
+const cors = require('cors');
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5002;
 
 const app = express();
 
@@ -13,6 +14,7 @@ connectDB();
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 //routing
 const goalRoutes = require("./routes/goalRoutes");
